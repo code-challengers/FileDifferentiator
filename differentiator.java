@@ -5,12 +5,12 @@ public class differentiator
 	
 	private File  file1;
    	private File  file2;
-  	private BufferedInputStream inputOrg;
-   	private BufferedInputStream inputNew;
+  	private BufferedReader inputOrg;
+   	private BufferedReader inputNew;
 
 	private void OpenStreams() throws Exception{
-		inputOrg = new BufferedInputStream(new FileInputStream(file1));
-		inputNew = new BufferedInputStream(new FileInputStream(file2));
+		inputOrg = new BufferedReader(new FileReader(file1));
+		inputNew = new BufferedReader(new FileReader(file2));
 
 	}
 
@@ -20,18 +20,33 @@ public class differentiator
 
 	}
 
-	public boolean compare(){
-		OpenStreams();
+	public boolean compare() throws Exception{
+		//OpenStreams();
+		inputOrg = new BufferedReader(new FileReader(file1));
+		inputNew = new BufferedReader(new FileReader(file2));
+		//System.out.println(file1.toString() + file2.toString());
 
-		boolean areEqual = false;
-		boolean completed = false;
+		String text1 = null;
+		String text2 = null;
 
+		boolean areEqual = true;
+		boolean completed = true;
+
+		while ((completed==true) &&((text1 = inputOrg.readLine()) != null)&&((text2 = inputNew.readLine()) != null)) 
+			{
+			    if (!text1.equalsIgnoreCase(text2))  
+			        areEqual=false;
+			    else 
+			        areEqual=true;   
+			}
+
+		/*
 		int flag1 = -1;
 		int flag2 = -1;
-
 		while(completed){
 			flag1 = inputOrg.read();
 			flag2 = inputNew.read();
+			System.out.println(flag1.toString() + flag2.toString());
 
 			if(flag1!=-1 || flag2!=-2){
 				completed = false;
@@ -39,8 +54,12 @@ public class differentiator
 			if(flag1!=flag2){
 				areEqual = false;
 			}
-			CloseStreams();
+			
+		//CloseStreams();
+		if(this.inputOrg!=null) inputOrg.close();
+		if(this.inputNew!=null) inputNew.close();
 		}
+		*/
 		return areEqual;
 
 	}
