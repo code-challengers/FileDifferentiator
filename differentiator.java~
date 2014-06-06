@@ -41,7 +41,7 @@ public class differentiator
 			    if (!text1.equalsIgnoreCase(text2))  
 				{	areEqual=false;
 					System.out.println("\nIn line no. " + line_num);
-					System.out.println("\nFile1 : "+text1.toString() + "\n File2: " +text2.toString());
+					System.out.println("File1 : "+text1.toString() + "\n File2: " +text2.toString());
 				}
 			    else 
 			        areEqual=true;   

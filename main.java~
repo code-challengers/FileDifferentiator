@@ -7,7 +7,7 @@ public class main{
 		System.out.println("\n* 	Welcome to file differentiator 		           *");
 		System.out.println("* Use this program to view differences among two files     *");
 		System.out.println("* Author : Ashish Belwase ( www.geeknepal.com)	           *\n");
-		System.out.println("************************************************************\n");
+		System.out.println("**************************************************************\n");
 		String file1 = args[0];
 		String file2 = args[1];
 
